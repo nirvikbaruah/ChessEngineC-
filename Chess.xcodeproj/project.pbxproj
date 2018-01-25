@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		064EBF4B2016E28200703855 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 064EBF4A2016E28200703855 /* main.cpp */; };
+		0697000A20195C150082EA5A /* MoveGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0697000820195C150082EA5A /* MoveGenerator.cpp */; };
 		069B02102018461E00F87E81 /* Pawn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 069B020E2018461E00F87E81 /* Pawn.cpp */; };
 		069B02132018577400F87E81 /* Rook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 069B02112018577400F87E81 /* Rook.cpp */; };
 		069B0216201858A200F87E81 /* Bishop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 069B0214201858A200F87E81 /* Bishop.cpp */; };
@@ -33,6 +34,8 @@
 /* Begin PBXFileReference section */
 		064EBF472016E28200703855 /* Chess */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Chess; sourceTree = BUILT_PRODUCTS_DIR; };
 		064EBF4A2016E28200703855 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		0697000820195C150082EA5A /* MoveGenerator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MoveGenerator.cpp; sourceTree = "<group>"; };
+		0697000920195C150082EA5A /* MoveGenerator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MoveGenerator.hpp; sourceTree = "<group>"; };
 		069B020D2018437700F87E81 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		069B020E2018461E00F87E81 /* Pawn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pawn.cpp; sourceTree = "<group>"; };
 		069B020F2018461E00F87E81 /* Pawn.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Pawn.hpp; sourceTree = "<group>"; };
@@ -88,6 +91,8 @@
 				06EDCD7C2018280F00626FF6 /* Piece.cpp */,
 				06EDCD7D2018280F00626FF6 /* Piece.hpp */,
 				069B020E2018461E00F87E81 /* Pawn.cpp */,
+				0697000820195C150082EA5A /* MoveGenerator.cpp */,
+				0697000920195C150082EA5A /* MoveGenerator.hpp */,
 				069B020F2018461E00F87E81 /* Pawn.hpp */,
 				069B02112018577400F87E81 /* Rook.cpp */,
 				069B02122018577400F87E81 /* Rook.hpp */,
@@ -165,6 +170,7 @@
 				069B021C2018595200F87E81 /* Queen.cpp in Sources */,
 				06EDCD7E2018280F00626FF6 /* Piece.cpp in Sources */,
 				06EDCD7B201823CC00626FF6 /* Board.cpp in Sources */,
+				0697000A20195C150082EA5A /* MoveGenerator.cpp in Sources */,
 				064EBF4B2016E28200703855 /* main.cpp in Sources */,
 				069B02102018461E00F87E81 /* Pawn.cpp in Sources */,
 				069B0216201858A200F87E81 /* Bishop.cpp in Sources */,

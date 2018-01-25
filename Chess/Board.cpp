@@ -36,7 +36,7 @@ void Board::Output(void){
     for (i = 7; i >= 0; i--){
         cout << endl;
         for (j = 0; j < 8; j++){
-            cout << " " << (*startupBoard[i][j]).GetLetter() << " ";
+            cout << " " << (*board[i][j]).GetLetter() << " ";
         }
     }
     cout << endl << endl;

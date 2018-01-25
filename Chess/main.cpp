@@ -19,26 +19,12 @@ void moveGen(int file, int rank){
 
 int main() {
     Board board;
-    board.Output();
-    /*
     string userMove;
     while(1){
-        output();
+        board.Output();
         cout << "Enter move e.g d2d4: ";
         cin >> userMove;
-        if (validateInput(userMove)){
-            int startFile;
-            int startRank;
-            int endFile;
-            int endRank;
-            startRank = userMove[0] - 'a';
-            startFile = userMove[1] - '1';
-            endRank = userMove[2] - 'a';
-            endFile = userMove[3] - '1';
-            board[endFile][endRank] = board[startFile][startRank];
-            board[startFile][startRank] = 0;
-            moveGen(startFile, startRank);
-        }
-    }*/
+        board.MovePiece(userMove);
+    }
     return 0;
 }
