@@ -10,8 +10,21 @@
 #include "Constants.h"
 #include <iostream>
 #include <string>
+#include "MoveGenerator.hpp"
+#include <algorithm>
 
 using namespace std;
+
+Piece* startupBoard[8][8] = {
+    {new Rook(1), new Knight(1), new Bishop(1), new Queen(1), new King(1), new Bishop(1), new Knight(1), new Rook(1)},
+    {new Pawn(1), new Pawn(1), new Pawn(1), new Pawn(1), new Pawn(1), new Pawn(1), new Pawn(1), new Pawn(1)},
+    {new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece()},
+    {new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece()},
+    {new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece()},
+    {new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece()},
+    {new Pawn(-1), new Pawn(-1), new Pawn(-1), new Pawn(-1), new Pawn(-1), new Pawn(-1), new Pawn(-1), new Pawn(-1)},
+    {new Rook(-1), new Knight(-1), new Bishop(-1), new Queen(-1), new King(-1), new Bishop(-1), new Knight(-1), new Rook(-1)}
+};
 
 Board::Board(void) {
     int i;
@@ -48,9 +61,15 @@ bool Board::MovePiece(string userMove){
         int startFile = userMove[1] - '1';
         int endRank = userMove[2] - 'a';
         int endFile = userMove[3] - '1';
-        board[endFile][endRank] = board[startFile][startRank];
-        board[startFile][startRank] = new Piece();
-        return true;
+        //TODO: ADD OCCUPIED SQUARES ARRAY
+        
+        if ((MoveGenerator::GenerateMoves(board[startFile][startRank]->GetDelta(), false, startFile, startRank, this)).count(numberedBoard[endFile][endRank])) {
+            cout << "Legal move" << endl;
+            board[endFile][endRank] = board[startFile][startRank];
+            board[startFile][startRank] = new Piece();
+            return true;
+        }
+        cout << "Illegal move" << endl;
     }
     return false;
 }
@@ -61,3 +80,8 @@ bool Board::ValidMove(string userMove){
     }
     return false;
 }
+
+Piece* Board::GetPieceAtPosition(int file, int rank){
+    return board[rank][file];
+}
+

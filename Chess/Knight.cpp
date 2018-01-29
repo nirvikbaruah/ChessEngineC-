@@ -20,9 +20,9 @@ Knight::Knight(int color) {
 
 char Knight::GetLetter(void) {
     if (colour == 1){
-        return 'K';
+        return 'N';
     }
-    return 'k';
+    return 'n';
 }
 
 int* Knight::GetDelta(void){
