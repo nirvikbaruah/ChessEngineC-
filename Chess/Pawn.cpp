@@ -13,6 +13,9 @@ Pawn::Pawn(int color) {
     colour = color;
     if (colour == -1){
         value = -pawn;
+        //Flips move direction for black pawn
+        delta[3] = -8;
+        delta[2] = 0;
     } else{
         value = pawn;
     }

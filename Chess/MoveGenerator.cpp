@@ -25,30 +25,48 @@ namespace MoveGenerator
         int previousFile;
         bool reachedEnd = false;
         int curRank;
-        
-        for (int curDelta = 0; curDelta < 8; curDelta++){
+        if (!isSpecialCase){
+            for (int curDelta = 0; curDelta < 8; curDelta++){
+                curPos = numberedBoard[file][rank];
+                curFile = (curPos % 8);
+                previousFile = curFile;
+                curRank = ((curPos - curFile) / 8);
+                reachedEnd = false;
+                if (delta[curDelta] != 0){
+                    while (reachedEnd != true){
+                        curPos += delta[curDelta];
+                        curFile = (curPos % 8);
+                        curRank = ((curPos - curFile) / 8);
+                        //Maximum of 2 file move so check doesn't wrap around board
+                        if (curPos < 0 || curPos > 63 || ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() != 0 || abs(previousFile-curFile) > 2){
+                            reachedEnd = true;
+                        }
+                        else{
+                            boardNums.insert(curPos);
+                        }
+                        previousFile = curFile;
+                    }
+                }
+            }
+        } else{
             curPos = numberedBoard[file][rank];
             curFile = (curPos % 8);
-            previousFile = curFile;
             curRank = ((curPos - curFile) / 8);
-            reachedEnd = false;
-            if (delta[curDelta] != 0){
-                while (reachedEnd != true){
-                    curPos += delta[curDelta];
-                    curFile = (curPos % 8);
-                    curRank = ((curPos - curFile) / 8);
-                    //Maximum of 2 file move so check doesn't wrap around board
-                    if (curPos < 0 || curPos > 63 || ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() != 0 || abs(previousFile-curFile) > 2){
-                        reachedEnd = true;
-                    }
-                    else{
-                        boardNums.insert(curPos);
-                    }
-                    previousFile = curFile;
+            if (curRank > 0 && curRank < 7){
+                //One will always be 0 so more efficient to just add both rather than
+                //use an IF statement
+                curPos += delta[2];
+                curPos += delta[3];
+                boardNums.insert(curPos);
+                curFile = (curPos % 8);
+                curRank = ((curPos - curFile) / 8);
+                if (curRank == 2 || curRank == 5){
+                    curPos += delta[2];
+                    curPos += delta[3];
+                    boardNums.insert(curPos);
                 }
             }
         }
-        //std::cout << ((*board).GetPieceAtPosition(3, 7))->GetValue() << std::endl;
         return boardNums;
 
     }

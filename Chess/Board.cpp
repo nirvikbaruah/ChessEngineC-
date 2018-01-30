@@ -11,7 +11,9 @@
 #include <iostream>
 #include <string>
 #include "MoveGenerator.hpp"
-#include <algorithm>
+#include <stdlib.h>
+
+
 
 using namespace std;
 
@@ -61,9 +63,14 @@ bool Board::MovePiece(string userMove){
         int startFile = userMove[1] - '1';
         int endRank = userMove[2] - 'a';
         int endFile = userMove[3] - '1';
+        bool isSpecialCase = false;
         //TODO: ADD OCCUPIED SQUARES ARRAY
+        //Other way aroudn as made mistake in rank and file assignment...
+        if (abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 10){
+            isSpecialCase = true;
+        }
         
-        if ((MoveGenerator::GenerateMoves(board[startFile][startRank]->GetDelta(), false, startFile, startRank, this)).count(numberedBoard[endFile][endRank])) {
+        if ((MoveGenerator::GenerateMoves(board[startFile][startRank]->GetDelta(), true, startFile, startRank, this)).count(numberedBoard[endFile][endRank])) {
             cout << "Legal move" << endl;
             board[endFile][endRank] = board[startFile][startRank];
             board[startFile][startRank] = new Piece();
