@@ -18,6 +18,7 @@ class Piece{
     public:
         Piece();
         int GetValue(void);
+        int GetColour(void);
         virtual char GetLetter(void);
         virtual int* GetDelta(void);
     protected:

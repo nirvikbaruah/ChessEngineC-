@@ -21,6 +21,10 @@ int Piece::GetValue(void){
     return value;
 }
 
+int Piece::GetColour(void){
+    return colour;
+}
+
 int* Piece::GetDelta(void){
     return delta;
 }

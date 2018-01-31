@@ -71,15 +71,15 @@ bool Board::MovePiece(string userMove){
             isSpecialCase = true;
         }
         
-        if ((MoveGenerator::GenerateMoves(board[startFile][startRank]->GetDelta(), isSpecialCase, startFile, startRank, this)).count(numberedBoard[endFile][endRank])) {
+        if (currentPlayer == GetPieceAtPosition(startRank, startFile)->GetColour() && (MoveGenerator::GenerateMoves(board[startFile][startRank]->GetDelta(), isSpecialCase, startFile, startRank, this)).count(numberedBoard[endFile][endRank])) {
             cout << "Legal move" << endl;
             board[endFile][endRank] = board[startFile][startRank];
             board[startFile][startRank] = new Piece();
             currentPlayer *= -1;
             return true;
         }
-        cout << "Illegal move" << endl;
     }
+    cout << "Illegal move" << endl;
     return false;
 }
 
