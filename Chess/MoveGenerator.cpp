@@ -55,19 +55,19 @@ namespace MoveGenerator
             int curPlayer = (*board).GetCurrentPlayer();
             int attackFile = curFile - 1;
             int attackRank = curRank + curPlayer;
-            if (curFile > 0 && curPlayer * (*board).GetPieceAtPosition(attackFile, attackRank)->GetValue() < 0){
-                boardNums.insert(numberedBoard[attackFile][attackRank]);
+            if (curFile > 0 && curPlayer * ((*board).GetPieceAtPosition(attackFile, attackRank))->GetValue() < 0){
+                boardNums.insert(numberedBoard[attackRank][attackFile]);
             }
             attackFile = curFile + 1;
             attackRank = curRank + curPlayer;
-            if (curFile < 7 && curPlayer * (*board).GetPieceAtPosition(attackFile, attackRank)->GetValue() < 0){
-                boardNums.insert(numberedBoard[attackFile][attackRank]);
+            if (curFile < 7 && curPlayer * ((*board).GetPieceAtPosition(attackFile, attackRank))->GetValue() < 0){
+                boardNums.insert(numberedBoard[attackRank][attackFile]);
             }
+            curPos += delta[2];
+            curPos += delta[3];
             if (curRank > 0 && curRank < 7){
                 //One will always be 0 so more efficient to just add both rather than
                 //use an IF statement
-                curPos += delta[2];
-                curPos += delta[3];
                 boardNums.insert(curPos);
                 curFile = (curPos % 8);
                 curRank = ((curPos - curFile) / 8);

@@ -36,6 +36,7 @@ Board::Board(void) {
             board[i][j] = startupBoard[i][j];
         }
     }
+    currentPlayer = 1;
 }
 
 int Board::GetTurn(void) {
@@ -91,6 +92,10 @@ bool Board::ValidMove(string userMove){
 
 int Board::GetCurrentPlayer(){
     return currentPlayer;
+}
+
+void Board::MakeQueenAtPoint(int startFile, int startRank){
+    board[startFile][startRank] = new Queen(GetCurrentPlayer());
 }
 
 Piece* Board::GetPieceAtPosition(int file, int rank){
