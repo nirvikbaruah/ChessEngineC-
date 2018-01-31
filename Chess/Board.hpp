@@ -30,12 +30,14 @@ class Board{
         bool MovePiece(string userMove);
         static int** GetNumberedBoard(void);
         Piece* GetPieceAtPosition(int startFile, int startRank);
+        int GetCurrentPlayer();
         Board();
     protected:
         static bool ValidMove(string userMove);
         Piece* board[8][8];
         //1 = white to move; -1 = black to move
         int turn = -1;
+        int currentPlayer = 1;
 };
 
 #endif /* Board_hpp */
