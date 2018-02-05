@@ -23,7 +23,8 @@ namespace MoveGenerator
         int curPos = numberedBoard[file][rank];
         int curFile;
         int previousFile;
-        bool reachedEnd = false;
+        bool reachedEnd;
+        int curPlayer = (*board).GetCurrentPlayer();
         int curRank;
         if (!isSpecialCase){
             for (int curDelta = 0; curDelta < 8; curDelta++){
@@ -38,7 +39,16 @@ namespace MoveGenerator
                         curFile = (curPos % 8);
                         curRank = ((curPos - curFile) / 8);
                         //Maximum of 2 file move so check doesn't wrap around board
-                        if (curPos < 0 || curPos > 63 || ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() != 0 || abs(previousFile-curFile) > 2){
+                        if (curPos < 0 || curPos > 63 || abs(previousFile-curFile) > 2){
+                            reachedEnd = true;
+                        }
+                        //Check if taking different player piece
+                        else if (curPlayer * ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() < 0){
+                            boardNums.insert(curPos);
+                            reachedEnd = true;
+                        }
+                        //Stops if reached own piece
+                        else if (curPlayer * ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() > 0){
                             reachedEnd = true;
                         }
                         else{
@@ -52,7 +62,6 @@ namespace MoveGenerator
             curPos = numberedBoard[file][rank];
             curFile = (curPos % 8);
             curRank = ((curPos - curFile) / 8);
-            int curPlayer = (*board).GetCurrentPlayer();
             int attackFile = curFile - 1;
             int attackRank = curRank + curPlayer;
             if (curFile > 0 && curPlayer * ((*board).GetPieceAtPosition(attackFile, attackRank))->GetValue() < 0){
@@ -79,6 +88,5 @@ namespace MoveGenerator
             }
         }
         return boardNums;
-
     }
 }
