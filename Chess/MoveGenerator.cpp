@@ -62,31 +62,67 @@ namespace MoveGenerator
             curPos = numberedBoard[file][rank];
             curFile = (curPos % 8);
             curRank = ((curPos - curFile) / 8);
-            int attackFile = curFile - 1;
-            int attackRank = curRank + curPlayer;
-            if (curFile > 0 && curPlayer * ((*board).GetPieceAtPosition(attackFile, attackRank))->GetValue() < 0){
-                boardNums.insert(numberedBoard[attackRank][attackFile]);
+            if (abs((*board).GetPieceAtPosition(curFile, curRank)->GetValue()) == 30){
+                for (int curDelta = 0; curDelta < 8; curDelta++){
+                    //Only iterate once for knights
+                    curPos = numberedBoard[file][rank];
+                    previousFile = (curPos % 8);
+                    curPos += delta[curDelta];
+                    curFile = (curPos % 8);
+                    curRank = ((curPos - curFile) / 8);
+                    if (curPos > 0 && curPos < 63 && abs(previousFile-curFile) <= 2 && curPlayer * ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() <= 0){
+                        boardNums.insert(curPos);
+                    }
+                }
             }
-            attackFile = curFile + 1;
-            attackRank = curRank + curPlayer;
-            if (curFile < 7 && curPlayer * ((*board).GetPieceAtPosition(attackFile, attackRank))->GetValue() < 0){
-                boardNums.insert(numberedBoard[attackRank][attackFile]);
-            }
-            curPos += delta[2];
-            curPos += delta[3];
-            if (curRank > 0 && curRank < 7){
-                //One will always be 0 so more efficient to just add both rather than
-                //use an IF statement
-                boardNums.insert(curPos);
-                curFile = (curPos % 8);
-                curRank = ((curPos - curFile) / 8);
-                if (curRank == 2 || curRank == 5){
-                    curPos += delta[2];
-                    curPos += delta[3];
+            else{
+                int attackFile = curFile - 1;
+                int attackRank = curRank + curPlayer;
+                if (curFile > 0 && curPlayer * ((*board).GetPieceAtPosition(attackFile, attackRank))->GetValue() < 0){
+                    boardNums.insert(numberedBoard[attackRank][attackFile]);
+                }
+                attackFile = curFile + 1;
+                attackRank = curRank + curPlayer;
+                if (curFile < 7 && curPlayer * ((*board).GetPieceAtPosition(attackFile, attackRank))->GetValue() < 0){
+                    boardNums.insert(numberedBoard[attackRank][attackFile]);
+                }
+                curPos += delta[2];
+                curPos += delta[3];
+                if (curRank > 0 && curRank < 7){
+                    //One will always be 0 so more efficient to just add both rather than
+                    //use an IF statement
                     boardNums.insert(curPos);
+                    curFile = (curPos % 8);
+                    curRank = ((curPos - curFile) / 8);
+                    if (curRank == 2 || curRank == 5){
+                        curPos += delta[2];
+                        curPos += delta[3];
+                        boardNums.insert(curPos);
+                    }
                 }
             }
         }
         return boardNums;
+    }
+    std::set<int> GenerateAllMoves(Board* board, int player){
+        std::set<int> allMoves;
+        std::set<int> pieceMoves;
+        bool isSpecialCase;
+        for (int i = 0; i < 8; i++){
+            cout << endl;
+            for (int j = 0; j < 8; j++){
+                //Checks if piece belongs to player
+                Piece* curPiece = (*board).GetPieceAtPosition(j, i);
+                isSpecialCase = false;
+                if (curPiece->GetValue() * player > 0){
+                    if (abs(((*board).GetPieceAtPosition(j, i))->GetValue()) == 10 || abs(((*board).GetPieceAtPosition(j, i))->GetValue()) == 30){
+                        isSpecialCase = true;
+                    }
+                    pieceMoves = GenerateMoves(curPiece->GetDelta(), isSpecialCase, i, j, board);
+                    allMoves.insert(pieceMoves.begin(), pieceMoves.end());
+                }
+            }
+        }
+        return allMoves;
     }
 }

@@ -13,8 +13,6 @@
 #include "MoveGenerator.hpp"
 #include <stdlib.h>
 
-
-
 using namespace std;
 
 Piece* startupBoard[8][8] = {
@@ -67,7 +65,7 @@ bool Board::MovePiece(string userMove){
         bool isSpecialCase = false;
         //TODO: ADD OCCUPIED SQUARES ARRAY
         //Other way aroudn as made mistake in rank and file assignment...
-        if (abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 10){
+        if (abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 10 || abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 30){
             isSpecialCase = true;
         }
         
