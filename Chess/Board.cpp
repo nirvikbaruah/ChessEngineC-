@@ -64,17 +64,24 @@ bool Board::MovePiece(string userMove){
         int endFile = userMove[3] - '1';
         bool isSpecialCase = false;
         //TODO: ADD OCCUPIED SQUARES ARRAY
-        //Other way aroudn as made mistake in rank and file assignment...
+        //Other way around as made mistake in rank and file assignment...
         if (abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 10 || abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 30){
             isSpecialCase = true;
         }
         
         if (currentPlayer == GetPieceAtPosition(startRank, startFile)->GetColour() && (MoveGenerator::GenerateMoves(board[startFile][startRank]->GetDelta(), isSpecialCase, startFile, startRank, this)).count(numberedBoard[endFile][endRank])) {
-            cout << "Legal move" << endl;
+            Piece* tempStart = board[startFile][startRank];
+            Piece* tempEnd = board[endFile][endRank];
             board[endFile][endRank] = board[startFile][startRank];
             board[startFile][startRank] = new Piece();
-            currentPlayer *= -1;
-            return true;
+            if (MoveGenerator::IsCheck(this, currentPlayer)){
+                board[endFile][endRank] = tempEnd;
+                board[startFile][startRank] = tempStart;
+            }
+            else{
+                currentPlayer *= -1;
+                return true;
+            }
         }
     }
     cout << "Illegal move" << endl;

@@ -9,6 +9,7 @@
 #ifndef Constants_h
 #define Constants_h
 
+
 #define pawn 10;
 #define bishop 35;
 #define knight 30;
