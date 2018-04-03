@@ -70,18 +70,21 @@ bool Board::MovePiece(string userMove){
         }
         
         if (currentPlayer == GetPieceAtPosition(startRank, startFile)->GetColour() && (MoveGenerator::GenerateMoves(board[startFile][startRank]->GetDelta(), isSpecialCase, startFile, startRank, this)).count(numberedBoard[endFile][endRank])) {
-            Piece* tempStart = board[startFile][startRank];
-            Piece* tempEnd = board[endFile][endRank];
             board[endFile][endRank] = board[startFile][startRank];
             board[startFile][startRank] = new Piece();
+            currentPlayer *= -1;
             if (MoveGenerator::IsCheck(this, currentPlayer)){
-                board[endFile][endRank] = tempEnd;
-                board[startFile][startRank] = tempStart;
+                if (MoveGenerator::IsCheckmate(this, currentPlayer)){
+                    cout << "Checkmate!" << endl;
+                    if (currentPlayer == 1){
+                        cout << "White wins!" << endl;
+                    }
+                    else{
+                        cout << "Black wins!" << endl;
+                    }
+                }
             }
-            else{
-                currentPlayer *= -1;
-                return true;
-            }
+            return true;
         }
     }
     cout << "Illegal move" << endl;
@@ -106,4 +109,9 @@ void Board::MakeQueenAtPoint(int startFile, int startRank){
 Piece* Board::GetPieceAtPosition(int file, int rank){
     return board[rank][file];
 }
+
+void Board::SetPieceAtPosition(int file, int rank, Piece* piece){
+    board[rank][file] = piece;
+}
+
 

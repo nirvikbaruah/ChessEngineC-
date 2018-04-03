@@ -27,7 +27,8 @@
 namespace MoveGenerator
 {
     std::set<int> GenerateMoves(int* delta, bool isSpecialCase, int startFile, int startRank, Board* board);
-    bool IsCheck(Board* board, int curPlayer);
+    bool IsCheck(Board* board, int currentPlayer);
+    bool IsCheckmate(Board* board, int currentPlayer);
 }
 
 #endif /* MoveGenerator_hpp */

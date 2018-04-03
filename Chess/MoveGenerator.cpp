@@ -24,15 +24,19 @@ namespace MoveGenerator
         int curPos = numberedBoard[file][rank];
         int curFile;
         int previousFile;
+        int previousRank;
         bool reachedEnd;
         int curPlayer = (*board).GetCurrentPlayer();
         int curRank;
+        Piece* tempStart;
+        Piece* tempEnd;
         if (!isSpecialCase){
             for (int curDelta = 0; curDelta < 8; curDelta++){
                 curPos = numberedBoard[file][rank];
                 curFile = (curPos % 8);
                 previousFile = curFile;
                 curRank = ((curPos - curFile) / 8);
+                previousRank = curRank;
                 reachedEnd = false;
                 if (delta[curDelta] != 0){
                     while (reachedEnd != true){
@@ -45,16 +49,39 @@ namespace MoveGenerator
                         }
                         //Check if taking different player piece
                         else if (curPlayer * ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() < 0){
-                            boardNums.insert(curPos);
+                            tempStart = (*board).GetPieceAtPosition(previousFile, previousRank);
+                            tempEnd = (*board).GetPieceAtPosition(curFile, curRank);
+                            (*board).SetPieceAtPosition(curFile, curRank, tempStart);
+                            (*board).SetPieceAtPosition(previousFile, previousRank, new Piece());
+                            if (IsCheck(board, curPlayer)){
+                                reachedEnd = true;
+                            }
+                            else{
+                                boardNums.insert(curPos);
+                            }
+                            (*board).SetPieceAtPosition(curFile, curRank, tempEnd);
+                            (*board).SetPieceAtPosition(previousFile, previousRank, tempStart);
                         }
                         //Stops if reached own piece
                         else if (curPlayer * ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() > 0){
                             reachedEnd = true;
                         }
                         else{
-                            boardNums.insert(curPos);
+                            tempStart = (*board).GetPieceAtPosition(previousFile, previousRank);
+                            tempEnd = (*board).GetPieceAtPosition(curFile, curRank);
+                            (*board).SetPieceAtPosition(curFile, curRank, tempStart);
+                            (*board).SetPieceAtPosition(previousFile, previousRank, new Piece());
+                            if (IsCheck(board, curPlayer)){
+                                reachedEnd = true;
+                            }
+                            else{
+                                boardNums.insert(curPos);
+                            }
+                            (*board).SetPieceAtPosition(curFile, curRank, tempEnd);
+                            (*board).SetPieceAtPosition(previousFile, previousRank, tempStart);
                         }
                         previousFile = curFile;
+                        previousRank = curRank;
                     }
                 }
             }
@@ -67,11 +94,26 @@ namespace MoveGenerator
                     //Only iterate once for knights
                     curPos = numberedBoard[file][rank];
                     previousFile = (curPos % 8);
+                    previousRank = ((curPos - curFile) / 8);
                     curPos += delta[curDelta];
                     curFile = (curPos % 8);
                     curRank = ((curPos - curFile) / 8);
                     if (curPos > 0 && curPos < 63 && abs(previousFile-curFile) <= 2 && curPlayer * ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() <= 0){
-                        boardNums.insert(curPos);
+                        tempStart = (*board).GetPieceAtPosition(previousFile, previousRank);
+                        tempEnd = (*board).GetPieceAtPosition(curFile, curRank);
+                        (*board).SetPieceAtPosition(curFile, curRank, tempStart);
+                        (*board).SetPieceAtPosition(previousFile, previousRank, new Piece());
+                        if (IsCheck(board, curPlayer)){
+                            (*board).SetPieceAtPosition(curFile, curRank, tempEnd);
+                            (*board).SetPieceAtPosition(previousFile, previousRank, tempStart);
+                            break;
+                            //Pinned piece so break out of loop
+                        }
+                        else{
+                            (*board).SetPieceAtPosition(curFile, curRank, tempEnd);
+                            (*board).SetPieceAtPosition(previousFile, previousRank, tempStart);
+                            boardNums.insert(curPos);
+                        }
                     }
                 }
             }
@@ -79,32 +121,104 @@ namespace MoveGenerator
                 int attackFile = curFile - 1;
                 int attackRank = curRank + curPlayer;
                 if (attackFile >= 0 && curPlayer * ((*board).GetPieceAtPosition(attackFile, attackRank))->GetValue() < 0){
-                    boardNums.insert(numberedBoard[attackRank][attackFile]);
+                    tempStart = (*board).GetPieceAtPosition(curFile, curRank);
+                    tempEnd = (*board).GetPieceAtPosition(attackFile, attackRank);
+                    (*board).SetPieceAtPosition(attackFile, attackRank, tempStart);
+                    (*board).SetPieceAtPosition(curFile, curRank, new Piece());
+                    if (!IsCheck(board, curPlayer)){
+                        boardNums.insert(numberedBoard[attackRank][attackFile]);
+                    }
+                    (*board).SetPieceAtPosition(attackFile, attackRank, tempEnd);
+                    (*board).SetPieceAtPosition(curFile, curRank, tempStart);
                 }
                 attackFile = curFile + 1;
                 attackRank = curRank + curPlayer;
                 if (attackFile <= 7 && curPlayer * ((*board).GetPieceAtPosition(attackFile, attackRank))->GetValue() < 0){
-                    boardNums.insert(numberedBoard[attackRank][attackFile]);
+                    tempStart = (*board).GetPieceAtPosition(curFile, curRank);
+                    tempEnd = (*board).GetPieceAtPosition(attackFile, attackRank);
+                    (*board).SetPieceAtPosition(attackFile, attackRank, tempStart);
+                    (*board).SetPieceAtPosition(curFile, curRank, new Piece());
+                    if (!IsCheck(board, curPlayer)){
+                        boardNums.insert(numberedBoard[attackRank][attackFile]);
+                    }
+                    (*board).SetPieceAtPosition(attackFile, attackRank, tempEnd);
+                    (*board).SetPieceAtPosition(curFile, curRank, tempStart);
                 }
+                previousFile = curFile;
+                previousRank = curRank;
                 curPos += delta[2];
                 curPos += delta[3];
                 if (curRank > 0 && curRank < 7){
                     //One will always be 0 so more efficient to just add both rather than
                     //use an IF statement
-                    boardNums.insert(curPos);
                     curFile = (curPos % 8);
                     curRank = ((curPos - curFile) / 8);
+                    tempStart = (*board).GetPieceAtPosition(previousFile, previousRank);
+                    tempEnd = (*board).GetPieceAtPosition(curFile, curRank);
+                    (*board).SetPieceAtPosition(curFile, curRank, tempStart);
+                    (*board).SetPieceAtPosition(previousFile, previousRank, new Piece());
+                    if (!IsCheck(board, curPlayer)){
+                        boardNums.insert(curPos);
+                    }
+                    (*board).SetPieceAtPosition(curFile, curRank, tempEnd);
+                    (*board).SetPieceAtPosition(previousFile, previousRank, tempStart);
+                    
+                    previousFile = curFile;
+                    previousRank = curRank;
+                    
                     if (curRank == 2 && ((*board).GetPieceAtPosition(curFile, 3))->GetValue() == 0){
                         curPos += delta[2];
-                        boardNums.insert(curPos);
+                        curFile = (curPos % 8);
+                        curRank = ((curPos - curFile) / 8);
+                        tempStart = (*board).GetPieceAtPosition(previousFile, previousRank);
+                        tempEnd = (*board).GetPieceAtPosition(curFile, curRank);
+                        (*board).SetPieceAtPosition(curFile, curRank, tempStart);
+                        (*board).SetPieceAtPosition(previousFile, previousRank, new Piece());
+                        if (!IsCheck(board, curPlayer)){
+                            boardNums.insert(curPos);
+                        }
+                        (*board).SetPieceAtPosition(curFile, curRank, tempEnd);
+                        (*board).SetPieceAtPosition(previousFile, previousRank, tempStart);
                     } else if (curRank == 5 && ((*board).GetPieceAtPosition(curFile, 4))->GetValue() == 0){
                         curPos += delta[3];
-                        boardNums.insert(curPos);
+                        curFile = (curPos % 8);
+                        curRank = ((curPos - curFile) / 8);
+                        tempStart = (*board).GetPieceAtPosition(previousFile, previousRank);
+                        tempEnd = (*board).GetPieceAtPosition(curFile, curRank);
+                        (*board).SetPieceAtPosition(curFile, curRank, tempStart);
+                        (*board).SetPieceAtPosition(previousFile, previousRank, new Piece());
+                        if (!IsCheck(board, curPlayer)){
+                            boardNums.insert(curPos);
+                        }
+                        (*board).SetPieceAtPosition(curFile, curRank, tempEnd);
+                        (*board).SetPieceAtPosition(previousFile, previousRank, tempStart);
                     }
                 }
             }
         }
         return boardNums;
+    }
+    
+    bool IsCheckmate(Board* board, int currentPlayer){
+        int kingPos = 0;
+        int kingCol = 0;
+        int kingRow = 0;
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                //Checks if piece belongs to player
+                Piece* curPiece = (*board).GetPieceAtPosition(j, i);
+                if (curPiece->GetValue() * currentPlayer == 1000){
+                    kingPos = i*8+j;
+                    kingRow = i;
+                    kingCol = j;
+                    break;
+                }
+            }
+        }
+        if ((GenerateMoves(((*board).GetPieceAtPosition(kingCol, kingRow))->GetDelta(), false, kingRow, kingCol, board)).size() == 0){
+            return true;
+        }
+        return false;
     }
     
     bool IsCheck(Board* board, int currentPlayer){

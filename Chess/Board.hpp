@@ -32,6 +32,7 @@ class Board{
         void MakeQueenAtPoint(int startFile, int startRank);
         Piece* GetPieceAtPosition(int startFile, int startRank);
         int GetCurrentPlayer();
+        void SetPieceAtPosition(int file, int rank, Piece* piece);
         Board();
     protected:
         static bool ValidMove(string userMove);
