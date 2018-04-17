@@ -8,6 +8,7 @@
 
 //STATIC CLASS TO GENERATE MOVES
 //TODO: CHECK IF PAWN CAN CHECK KING
+//TODO: ADD PAWN PROMOTION TO QUEEN
 
 #include "MoveGenerator.hpp"
 #include <iostream>
@@ -71,10 +72,7 @@ namespace MoveGenerator
                             tempEnd = (*board).GetPieceAtPosition(curFile, curRank);
                             (*board).SetPieceAtPosition(curFile, curRank, tempStart);
                             (*board).SetPieceAtPosition(previousFile, previousRank, new Piece());
-                            if (IsCheck(board, curPlayer)){
-                                reachedEnd = true;
-                            }
-                            else{
+                            if (!IsCheck(board, curPlayer)){
                                 boardNums.insert(curPos);
                             }
                             (*board).SetPieceAtPosition(curFile, curRank, tempEnd);
@@ -89,12 +87,13 @@ namespace MoveGenerator
             curPos = numberedBoard[file][rank];
             curFile = (curPos % 8);
             curRank = ((curPos - curFile) / 8);
+            //For knights
             if (abs((*board).GetPieceAtPosition(curFile, curRank)->GetValue()) == 30){
                 for (int curDelta = 0; curDelta < 8; curDelta++){
-                    //Only iterate once for knights
+                    //Only iterate once for knights and kings
                     curPos = numberedBoard[file][rank];
                     previousFile = (curPos % 8);
-                    previousRank = ((curPos - curFile) / 8);
+                    previousRank = ((curPos - previousFile) / 8);
                     curPos += delta[curDelta];
                     curFile = (curPos % 8);
                     curRank = ((curPos - curFile) / 8);
@@ -117,6 +116,31 @@ namespace MoveGenerator
                     }
                 }
             }
+            //For kings
+            if (abs((*board).GetPieceAtPosition(curFile, curRank)->GetValue()) == 1000){
+                //Similar to code for knights with few slight tweaks
+                for (int curDelta = 0; curDelta < 8; curDelta++){
+                    //Only iterate once for knights and kings
+                    curPos = numberedBoard[file][rank];
+                    previousFile = (curPos % 8);
+                    previousRank = ((curPos - previousFile) / 8);
+                    curPos += delta[curDelta];
+                    curFile = (curPos % 8);
+                    curRank = ((curPos - curFile) / 8);
+                    if (curPos > 0 && curPos < 63 && abs(previousFile-curFile) <= 2 && curPlayer * ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() <= 0){
+                        tempStart = (*board).GetPieceAtPosition(previousFile, previousRank);
+                        tempEnd = (*board).GetPieceAtPosition(curFile, curRank);
+                        (*board).SetPieceAtPosition(curFile, curRank, tempStart);
+                        (*board).SetPieceAtPosition(previousFile, previousRank, new Piece());
+                        if (!IsCheck(board, curPlayer)){
+                            boardNums.insert(curPos);
+                        }
+                        (*board).SetPieceAtPosition(curFile, curRank, tempEnd);
+                        (*board).SetPieceAtPosition(previousFile, previousRank, tempStart);
+                    }
+                }
+            }
+            //For pawns
             else{
                 int attackFile = curFile - 1;
                 int attackRank = curRank + curPlayer;
@@ -148,7 +172,9 @@ namespace MoveGenerator
                 previousRank = curRank;
                 curPos += delta[2];
                 curPos += delta[3];
-                if (curRank > 0 && curRank < 7){
+                curFile = (curPos % 8);
+                curRank = ((curPos - curFile) / 8);
+                if (curRank > 0 && curRank < 7 && ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() == 0){
                     //One will always be 0 so more efficient to just add both rather than
                     //use an IF statement
                     curFile = (curPos % 8);
@@ -237,8 +263,29 @@ namespace MoveGenerator
                 }
             }
         }
+        
+        //Check pawns right side
+        int newRow = kingRow + currentPlayer;
+        int newCol = kingCol + 1;
+        if (newRow < 8 && newRow >= 0 && newCol < 8){
+            if ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -10){
+                cout << "Right side pawn check" << endl;
+                return true;
+            }
+        }
+        
+        //Check pawns left side
+        newRow = kingRow + currentPlayer;
+        newCol = kingCol - 1;
+        if (newRow < 8 && newRow >= 0 && newCol >= 0){
+            if ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -10){
+                cout << "Left side pawn check" << endl;
+                return true;
+            }
+        }
+    
         //Check upwards
-        int newRow = kingRow + 1;
+        newRow = kingRow + 1;
         while (newRow < 8 && ((*board).GetPieceAtPosition(kingCol, newRow))->GetValue() == 0){
             newRow++;
         }
@@ -258,7 +305,7 @@ namespace MoveGenerator
         }
         
         //Check right row
-        int newCol = kingCol + 1;
+        newCol = kingCol + 1;
         while (newCol < 8 && ((*board).GetPieceAtPosition(newCol, kingRow))->GetValue() == 0){
             newCol++;
         }

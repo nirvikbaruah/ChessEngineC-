@@ -63,9 +63,8 @@ bool Board::MovePiece(string userMove){
         int endRank = userMove[2] - 'a';
         int endFile = userMove[3] - '1';
         bool isSpecialCase = false;
-        //TODO: ADD OCCUPIED SQUARES ARRAY
         //Other way around as made mistake in rank and file assignment...
-        if (abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 10 || abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 30){
+        if (abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 10 || abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 30 || abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 1000){
             isSpecialCase = true;
         }
         
@@ -77,10 +76,10 @@ bool Board::MovePiece(string userMove){
                 if (MoveGenerator::IsCheckmate(this, currentPlayer)){
                     cout << "Checkmate!" << endl;
                     if (currentPlayer == 1){
-                        cout << "White wins!" << endl;
+                        cout << "Black wins!" << endl;
                     }
                     else{
-                        cout << "Black wins!" << endl;
+                        cout << "White wins!" << endl;
                     }
                 }
             }
