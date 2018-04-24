@@ -13,6 +13,8 @@
 #include "MoveGenerator.hpp"
 #include <iostream>
 #include <set>
+#include <vector>
+#include <tuple>
 #include "Board.hpp"
 #include <stdlib.h>
 #include "Constants.h"
@@ -436,6 +438,33 @@ namespace MoveGenerator
             return true;
         }
         return false;
+    }
+    
+    std::tuple<std::vector<int>, std::vector<std::set<int>>> GenerateAllMoves(Board* board, int currentPlayer){
+        //Creates 2d Vector to store positions of all pieces
+        std::vector<std::set<int>> boardPositions;
+        std::vector<int> piecePositions;
+        std::set<int> temporary;
+        bool isSpecialCase;
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                //Checks if piece belongs to player
+                Piece* curPiece = (*board).GetPieceAtPosition(j, i);
+                isSpecialCase = false;
+                if (curPiece->GetValue() * currentPlayer > 0){
+                    if (abs((*board).GetPieceAtPosition(i, j)->GetValue()) == 10 || abs((*board).GetPieceAtPosition(i, j)->GetValue()) == 30 || abs((*board).GetPieceAtPosition(i, j)->GetValue()) == 1000){
+                        isSpecialCase = true;
+                    }
+                    //Only push if piece can move
+                    temporary = GenerateMoves(curPiece->GetDelta(), isSpecialCase, i, j, board);
+                    if (temporary.size() > 0){
+                        boardPositions.push_back(temporary);
+                        piecePositions.push_back(numberedBoard[i][j]);
+                    }
+                }
+            }
+        }
+        return std::tuple<std::vector<int>, std::vector<std::set<int>>> {piecePositions, boardPositions};
     }
 }
 

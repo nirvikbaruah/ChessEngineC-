@@ -13,6 +13,8 @@
 
 #include <stdio.h>
 #include <set>
+#include <tuple>
+#include <vector>
 #include "Board.hpp"
 #include "Constants.h"
 #include "Pawn.hpp"
@@ -29,6 +31,7 @@ namespace MoveGenerator
     std::set<int> GenerateMoves(int* delta, bool isSpecialCase, int startFile, int startRank, Board* board);
     bool IsCheck(Board* board, int currentPlayer);
     bool IsCheckmate(Board* board, int currentPlayer);
+    std::tuple<std::vector<int>, std::vector<std::set<int>>> GenerateAllMoves(Board* board, int currentPlayer);
 }
 
 #endif /* MoveGenerator_hpp */

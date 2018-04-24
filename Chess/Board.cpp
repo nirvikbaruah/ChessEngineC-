@@ -10,6 +10,7 @@
 #include "Constants.h"
 #include <iostream>
 #include <string>
+#include <tuple>
 #include "MoveGenerator.hpp"
 #include <stdlib.h>
 
@@ -58,6 +59,7 @@ void Board::Output(void){
 
 bool Board::MovePiece(string userMove){
     if (ValidMove(userMove)){
+        //std::get<1>(MoveGenerator::GenerateAllMoves(this, currentPlayer)).size()
         int startRank = userMove[0] - 'a';
         int startFile = userMove[1] - '1';
         int endRank = userMove[2] - 'a';
