@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
+#include <tuple>
 #include "Constants.h"
 #include "Pawn.hpp"
 #include "Piece.hpp"
@@ -33,6 +34,7 @@ class Board{
         Piece* GetPieceAtPosition(int startFile, int startRank);
         int GetCurrentPlayer();
         void SetPieceAtPosition(int file, int rank, Piece* piece);
+        void MoveComputer();
         Board();
     protected:
         static bool ValidMove(string userMove);

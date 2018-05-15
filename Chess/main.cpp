@@ -9,22 +9,23 @@
 #include <iostream>
 #include <string>
 #include "Board.hpp"
+#include "ComputerMove.hpp"
 
 using namespace std;
-
-void moveGen(int file, int rank){
-    //cout << numberedBoard[file][rank]<< endl;
-}
-
 
 int main() {
     Board board;
     string userMove;
+    bool legalMove;
     while(1){
+        legalMove = false;
         board.Output();
-        cout << "Enter move e.g d2d4: ";
-        cin >> userMove;
-        board.MovePiece(userMove);
+        do{
+            cout << "Enter move e.g D2D4: ";
+            cin >> userMove;
+            legalMove = board.MovePiece(userMove);
+        } while (legalMove == false);
+        board.MoveComputer();
     }
     return 0;
 }

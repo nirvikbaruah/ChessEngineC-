@@ -56,12 +56,10 @@ namespace MoveGenerator
                             tempEnd = (*board).GetPieceAtPosition(curFile, curRank);
                             (*board).SetPieceAtPosition(curFile, curRank, tempStart);
                             (*board).SetPieceAtPosition(previousFile, previousRank, new Piece());
-                            if (IsCheck(board, curPlayer)){
-                                reachedEnd = true;
-                            }
-                            else{
+                            if (!IsCheck(board, curPlayer)){
                                 boardNums.insert(curPos);
                             }
+                            reachedEnd = true;
                             (*board).SetPieceAtPosition(curFile, curRank, tempEnd);
                             (*board).SetPieceAtPosition(previousFile, previousRank, tempStart);
                         }
@@ -119,7 +117,7 @@ namespace MoveGenerator
                 }
             }
             //For kings
-            if (abs((*board).GetPieceAtPosition(curFile, curRank)->GetValue()) == 1000){
+            else if (abs((*board).GetPieceAtPosition(curFile, curRank)->GetValue()) == 1000){
                 //Similar to code for knights with few slight tweaks
                 for (int curDelta = 0; curDelta < 8; curDelta++){
                     //Only iterate once for knights and kings
@@ -452,7 +450,7 @@ namespace MoveGenerator
                 Piece* curPiece = (*board).GetPieceAtPosition(j, i);
                 isSpecialCase = false;
                 if (curPiece->GetValue() * currentPlayer > 0){
-                    if (abs((*board).GetPieceAtPosition(i, j)->GetValue()) == 10 || abs((*board).GetPieceAtPosition(i, j)->GetValue()) == 30 || abs((*board).GetPieceAtPosition(i, j)->GetValue()) == 1000){
+                    if (abs((*board).GetPieceAtPosition(j, i)->GetValue()) == 10 || abs((*board).GetPieceAtPosition(j, i)->GetValue()) == 30 || abs((*board).GetPieceAtPosition(j, i)->GetValue()) == 1000){
                         isSpecialCase = true;
                     }
                     //Only push if piece can move
