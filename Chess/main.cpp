@@ -16,6 +16,7 @@ using namespace std;
 int main() {
     Board board;
     string userMove;
+    //srand(time(NULL));
     bool legalMove;
     while(1){
         legalMove = false;

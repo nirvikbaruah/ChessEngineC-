@@ -25,5 +25,6 @@
 namespace ComputerMove
 {
     std::tuple<int, int>ChooseMove(Board* board, int currentPlayer);
+    int evaluateBoard(Board* board, int currentPlayer);
 }
 #endif /* ComputerMove_hpp */

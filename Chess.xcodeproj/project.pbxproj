@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060086A8209FE40400BE08BA /* ComputerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 060086A6209FE40400BE08BA /* ComputerMove.cpp */; };
 		064EBF4B2016E28200703855 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 064EBF4A2016E28200703855 /* main.cpp */; };
 		0697000A20195C150082EA5A /* MoveGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0697000820195C150082EA5A /* MoveGenerator.cpp */; };
 		069B02102018461E00F87E81 /* Pawn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 069B020E2018461E00F87E81 /* Pawn.cpp */; };
@@ -32,6 +33,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		060086A6209FE40400BE08BA /* ComputerMove.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ComputerMove.cpp; sourceTree = "<group>"; };
+		060086A7209FE40400BE08BA /* ComputerMove.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ComputerMove.hpp; sourceTree = "<group>"; };
 		064EBF472016E28200703855 /* Chess */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Chess; sourceTree = BUILT_PRODUCTS_DIR; };
 		064EBF4A2016E28200703855 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0697000820195C150082EA5A /* MoveGenerator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MoveGenerator.cpp; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 		064EBF492016E28200703855 /* Chess */ = {
 			isa = PBXGroup;
 			children = (
+				060086A6209FE40400BE08BA /* ComputerMove.cpp */,
+				060086A7209FE40400BE08BA /* ComputerMove.hpp */,
 				06EDCD79201823CC00626FF6 /* Board.cpp */,
 				06EDCD7A201823CC00626FF6 /* Board.hpp */,
 				069B020D2018437700F87E81 /* Constants.h */,
@@ -135,7 +140,7 @@
 		064EBF3F2016E28100703855 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Nirvik Baruah";
 				TargetAttributes = {
 					064EBF462016E28100703855 = {
@@ -172,6 +177,7 @@
 				06EDCD7B201823CC00626FF6 /* Board.cpp in Sources */,
 				0697000A20195C150082EA5A /* MoveGenerator.cpp in Sources */,
 				064EBF4B2016E28200703855 /* main.cpp in Sources */,
+				060086A8209FE40400BE08BA /* ComputerMove.cpp in Sources */,
 				069B02102018461E00F87E81 /* Pawn.cpp in Sources */,
 				069B0216201858A200F87E81 /* Bishop.cpp in Sources */,
 				069B0219201858ED00F87E81 /* Knight.cpp in Sources */,
@@ -196,6 +202,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -203,6 +210,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -251,6 +259,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -258,6 +267,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -289,7 +299,6 @@
 		064EBF4F2016E28200703855 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_STYLE = Automatic;
 				GCC_NO_COMMON_BLOCKS = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -299,7 +308,6 @@
 		064EBF502016E28200703855 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_STYLE = Automatic;
 				GCC_NO_COMMON_BLOCKS = NO;
 				"OTHER_LDFLAGS[arch=*]" = "";
