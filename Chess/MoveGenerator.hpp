@@ -28,7 +28,7 @@
 //Use namespace to add behaviour of a static class
 namespace MoveGenerator
 {
-    std::set<int> GenerateMoves(int* delta, bool isSpecialCase, int startFile, int startRank, Board* board);
+    std::set<int> GenerateMoves(int* delta, bool isSpecialCase, int startFile, int startRank, Board* board, int curPlayer);
     bool IsCheck(Board* board, int currentPlayer);
     bool IsCheckmate(Board* board, int currentPlayer);
     std::tuple<std::vector<int>, std::vector<std::set<int>>> GenerateAllMoves(Board* board, int currentPlayer);

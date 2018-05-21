@@ -21,7 +21,7 @@
 
 namespace MoveGenerator
 {
-    std::set<int> GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board){
+    std::set<int> GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer){
         //TAKE OCCUPIED SQUARES AS ARRAY
         std::set<int> boardNums;
         int curPos = numberedBoard[file][rank];
@@ -29,7 +29,6 @@ namespace MoveGenerator
         int previousFile;
         int previousRank;
         bool reachedEnd;
-        int curPlayer = (*board).GetCurrentPlayer();
         int curRank;
         Piece* tempStart;
         Piece* tempEnd;
@@ -241,7 +240,7 @@ namespace MoveGenerator
                 }
             }
         }
-        if ((GenerateMoves(((*board).GetPieceAtPosition(kingCol, kingRow))->GetDelta(), false, kingRow, kingCol, board)).size() == 0){
+        if ((GenerateMoves(((*board).GetPieceAtPosition(kingCol, kingRow))->GetDelta(), false, kingRow, kingCol, board, currentPlayer)).size() == 0){
             return true;
         }
         return false;
@@ -269,7 +268,7 @@ namespace MoveGenerator
         int newCol = kingCol + 1;
         if (newRow < 8 && newRow >= 0 && newCol < 8){
             if ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -10){
-                cout << "Right side pawn check" << endl;
+                //cout << "Right side pawn check" << endl;
                 return true;
             }
         }
@@ -279,7 +278,7 @@ namespace MoveGenerator
         newCol = kingCol - 1;
         if (newRow < 8 && newRow >= 0 && newCol >= 0){
             if ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -10){
-                cout << "Left side pawn check" << endl;
+                //cout << "Left side pawn check" << endl;
                 return true;
             }
         }
@@ -290,7 +289,7 @@ namespace MoveGenerator
             newRow++;
         }
         if (newRow < 8 && (((currentPlayer * ((*board).GetPieceAtPosition(kingCol, newRow))->GetValue()) == -50) || ((currentPlayer * ((*board).GetPieceAtPosition(kingCol, newRow))->GetValue()) == -90))){
-            cout << "Straight up check" << endl;
+            //cout << "Straight up check" << endl;
             return true;
         }
         
@@ -300,7 +299,7 @@ namespace MoveGenerator
             newRow--;
         }
         if (newRow >= 0 && (((currentPlayer * ((*board).GetPieceAtPosition(kingCol, newRow))->GetValue()) == -50) || ((currentPlayer * ((*board).GetPieceAtPosition(kingCol, newRow))->GetValue()) == -90))){
-            cout << "Straight down check" << endl;
+            //cout << "Straight down check" << endl;
             return true;
         }
         
@@ -310,7 +309,7 @@ namespace MoveGenerator
             newCol++;
         }
         if (newCol < 8 && (((currentPlayer * ((*board).GetPieceAtPosition(newCol, kingRow))->GetValue()) == -50) || ((currentPlayer * ((*board).GetPieceAtPosition(newCol, kingRow))->GetValue()) == -90))){
-            cout << "Straight right check" << endl;
+            //cout << "Straight right check" << endl;
             return true;
         }
         
@@ -320,7 +319,7 @@ namespace MoveGenerator
             newCol--;
         }
         if (newCol >= 0 && (((currentPlayer * ((*board).GetPieceAtPosition(newCol, kingRow))->GetValue()) == -50) || ((currentPlayer * ((*board).GetPieceAtPosition(newCol, kingRow))->GetValue()) == -90))){
-            cout << "Straight left check" << endl;
+            //cout << "Straight left check" << endl;
             return true;
         }
         
@@ -332,7 +331,7 @@ namespace MoveGenerator
             newRow++;
         }
         if (newCol < 8 && newRow < 8 && (((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -90) || ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -35))){
-            cout << "Straight right-up check" << endl;
+            //cout << "Straight right-up check" << endl;
             return true;
         }
         
@@ -344,7 +343,7 @@ namespace MoveGenerator
             newRow--;
         }
         if (newCol < 8 && newRow >= 0 && (((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -90) || ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -35))){
-            cout << "Straight right-down check" << endl;
+            //cout << "Straight right-down check" << endl;
             return true;
         }
         
@@ -356,7 +355,7 @@ namespace MoveGenerator
             newRow++;
         }
         if (newCol >= 0 && newRow < 8 && (((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -90) || ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -35))){
-            cout << "Straight left-up check" << endl;
+            //cout << "Straight left-up check" << endl;
             return true;
         }
         
@@ -368,7 +367,7 @@ namespace MoveGenerator
             newRow--;
         }
         if (newCol >= 0 && newRow >= 0 && (((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -90) || ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -35))){
-            cout << "Straight left-down check" << endl;
+            //cout << "Straight left-down check" << endl;
             return true;
         }
         
@@ -376,7 +375,7 @@ namespace MoveGenerator
         newCol = kingCol + 1;
         newRow = kingRow + 2;
         if (newCol < 8 && newRow < 8 && ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -30)){
-            cout << "Top-right knight check" << endl;
+            //cout << "Top-right knight check" << endl;
             return true;
         }
         
@@ -384,7 +383,7 @@ namespace MoveGenerator
         newCol = kingCol - 1;
         newRow = kingRow + 2;
         if (newCol >= 0 && newRow < 8 && ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -30)){
-            cout << "Top-left knight check" << endl;
+            //cout << "Top-left knight check" << endl;
             return true;
         }
         
@@ -392,7 +391,7 @@ namespace MoveGenerator
         newCol = kingCol + 2;
         newRow = kingRow + 1;
         if (newCol < 8 && newRow < 8 && ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -30)){
-            cout << "right-top knight check" << endl;
+            //cout << "right-top knight check" << endl;
             return true;
         }
         
@@ -400,7 +399,7 @@ namespace MoveGenerator
         newCol = kingCol + 2;
         newRow = kingRow - 1;
         if (newCol < 8 && newRow >= 0 && ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -30)){
-            cout << "right-bottom knight check" << endl;
+            //cout << "right-bottom knight check" << endl;
             return true;
         }
         
@@ -408,7 +407,7 @@ namespace MoveGenerator
         newCol = kingCol - 2;
         newRow = kingRow + 1;
         if (newCol >= 0 && newRow < 8 && ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -30)){
-            cout << "left-top knight check" << endl;
+            //cout << "left-top knight check" << endl;
             return true;
         }
         
@@ -416,7 +415,7 @@ namespace MoveGenerator
         newCol = kingCol - 2;
         newRow = kingRow - 1;
         if (newCol >= 0 && newRow >= 0 && ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -30)){
-            cout << "left-bottom knight check" << endl;
+            //cout << "left-bottom knight check" << endl;
             return true;
         }
         
@@ -424,7 +423,7 @@ namespace MoveGenerator
         newCol = kingCol - 1;
         newRow = kingRow - 2;
         if (newCol >= 0 && newRow >= 0 && ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -30)){
-            cout << "bottom-left knight check" << endl;
+            //cout << "bottom-left knight check" << endl;
             return true;
         }
         
@@ -432,7 +431,7 @@ namespace MoveGenerator
         newCol = kingCol + 1;
         newRow = kingRow - 2;
         if (newCol < 8 && newRow >= 0 && ((currentPlayer * ((*board).GetPieceAtPosition(newCol, newRow))->GetValue()) == -30)){
-            cout << "bottom-right knight check" << endl;
+            //cout << "bottom-right knight check" << endl;
             return true;
         }
         return false;
@@ -454,7 +453,7 @@ namespace MoveGenerator
                         isSpecialCase = true;
                     }
                     //Only push if piece can move
-                    temporary = GenerateMoves(curPiece->GetDelta(), isSpecialCase, i, j, board);
+                    temporary = GenerateMoves(curPiece->GetDelta(), isSpecialCase, i, j, board, currentPlayer);
                     if (temporary.size() > 0){
                         boardPositions.push_back(temporary);
                         piecePositions.push_back(numberedBoard[i][j]);

@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/Board.cpp"
-            timestampString = "548560333.68407"
+            timestampString = "548580769.531219"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684135"
+            timestampString = "548580769.531333"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4"
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684181"
+            timestampString = "548580769.531433"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board)"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684221"
+            timestampString = "548580769.531523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board)"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684257"
+            timestampString = "548580769.531608"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board)"
+            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,12 +90,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684294"
+            timestampString = "548580769.531693"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chess/MoveGenerator.cpp"
+            timestampString = "548580769.531774"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
             endingLineNumber = "122"
-            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board)"
+            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -106,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.68433"
+            timestampString = "548580769.531859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board)"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,44 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684366"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684402"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684437"
+            timestampString = "548580769.53194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
             endingLineNumber = "136"
-            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board)"
+            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -170,11 +154,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684473"
+            timestampString = "548580769.532023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chess/MoveGenerator.cpp"
+            timestampString = "548580769.532106"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "IsCheckmate(Board* board, int currentPlayer)"
             landmarkType = "9">
          </BreakpointContent>
@@ -186,12 +186,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684509"
+            timestampString = "548580769.532185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board)"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -202,12 +202,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684545"
+            timestampString = "548580769.5322829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board)"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684579"
+            timestampString = "548580769.532349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
+            startingLineNumber = "456"
+            endingLineNumber = "456"
             landmarkName = "GenerateAllMoves(Board* board, int currentPlayer)"
             landmarkType = "9">
          </BreakpointContent>
@@ -234,12 +234,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684613"
+            timestampString = "548580769.532415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board)"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -250,28 +250,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684649"
+            timestampString = "548580769.532482"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chess/MoveGenerator.cpp"
+            timestampString = "548580769.532548"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
             endingLineNumber = "37"
-            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.684683"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board)"
+            landmarkName = "GenerateMoves(int* delta, bool isSpecialCase, int file, int rank, Board* board, int curPlayer)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -282,27 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/ComputerMove.cpp"
-            timestampString = "548560333.684728"
+            timestampString = "548580769.532619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "ChooseMove(Board* board, int currentPlayer)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chess/ComputerMove.cpp"
-            timestampString = "548560333.68501"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "ChooseMove(Board* board, int currentPlayer)"
             landmarkType = "9">
          </BreakpointContent>
@@ -314,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/Board.cpp"
-            timestampString = "548560333.685204"
+            timestampString = "548580769.532716"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
@@ -330,12 +314,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/Board.cpp"
-            timestampString = "548560333.685245"
+            timestampString = "548580769.532766"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
             endingLineNumber = "104"
-            landmarkName = "Board::MoveComputer()"
+            landmarkName = "Board::MoveCommentary(int currentPlayer)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -346,7 +330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/ComputerMove.cpp"
-            timestampString = "548560333.685285"
+            timestampString = "548580769.532814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -362,29 +346,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/Board.cpp"
-            timestampString = "548560333.685473"
+            timestampString = "548580769.532891"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
             endingLineNumber = "105"
-            landmarkName = "Board::MoveComputer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chess/ComputerMove.cpp"
-            timestampString = "548560333.685516"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "ChooseMove(Board* board, int currentPlayer)"
-            landmarkType = "9">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -394,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.685703"
+            timestampString = "548580769.53294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
+            startingLineNumber = "441"
+            endingLineNumber = "441"
             landmarkName = "GenerateAllMoves(Board* board, int currentPlayer)"
             landmarkType = "9">
          </BreakpointContent>
@@ -410,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/MoveGenerator.cpp"
-            timestampString = "548560333.685745"
+            timestampString = "548580769.533004"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "453"
-            endingLineNumber = "453"
+            startingLineNumber = "452"
+            endingLineNumber = "452"
             landmarkName = "GenerateAllMoves(Board* board, int currentPlayer)"
             landmarkType = "9">
          </BreakpointContent>
@@ -422,11 +390,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/ComputerMove.cpp"
-            timestampString = "548560333.6857851"
+            timestampString = "548580769.533067"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -438,11 +406,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/Board.cpp"
-            timestampString = "548560333.685969"
+            timestampString = "548580769.533145"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -454,17 +422,176 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chess/Board.cpp"
-            timestampString = "548560333.686009"
+            timestampString = "548580769.533195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
             endingLineNumber = "118"
-            landmarkName = "Board::ValidMove(string userMove)"
+            landmarkName = "Board::MoveComputer()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chess/ComputerMove.cpp"
+            timestampString = "548580769.5332429"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "minimax(Board* board, int currentPlayer, int currentDepth, int alpha, int beta)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chess/ComputerMove.cpp"
+            timestampString = "548580769.533313"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "ChooseMove(Board* board, int currentPlayer)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chess/ComputerMove.cpp"
+            timestampString = "548580769.533381"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "ChooseMove(Board* board, int currentPlayer)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chess/MoveGenerator.cpp"
+            timestampString = "548580769.533447"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "440"
+            endingLineNumber = "440"
+            landmarkName = "GenerateAllMoves(Board* board, int currentPlayer)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chess/ComputerMove.cpp"
+            timestampString = "548580769.533507"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "ChooseMove(Board* board, int currentPlayer)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ComputerMove::ChooseMove(Board*, int)"
+                  moduleName = "Chess"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nirvikbaruah/Desktop/C++/Chess/Chess/ComputerMove.cpp"
+                  timestampString = "548568971.385083"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "3693">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ComputerMove::ChooseMove(Board*, int)"
+                  moduleName = "Chess"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nirvikbaruah/Desktop/C++/Chess/Chess/ComputerMove.cpp"
+                  timestampString = "548568971.389099"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "3744">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ComputerMove::ChooseMove(Board*, int)"
+                  moduleName = "Chess"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nirvikbaruah/Desktop/C++/Chess/Chess/ComputerMove.cpp"
+                  timestampString = "548568971.392429"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "4188">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chess/ComputerMove.cpp"
+            timestampString = "548580769.533568"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "ChooseMove(Board* board, int currentPlayer)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chess/ComputerMove.cpp"
+            timestampString = "548580769.533627"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "evaluateBoard(Board* board, int currentPlayer)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
