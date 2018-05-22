@@ -76,12 +76,10 @@ bool Board::MovePiece(string userMove){
         if (abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 10 || abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 30 || abs(GetPieceAtPosition(startRank, startFile)->GetValue()) == 1000){
             isSpecialCase = true;
         }
-        cout << (MoveGenerator::GenerateMoves(board[startFile][startRank]->GetDelta(), isSpecialCase, startFile, startRank, this, currentPlayer)).size() << endl;
         if (currentPlayer == GetPieceAtPosition(startRank, startFile)->GetColour() && (MoveGenerator::GenerateMoves(board[startFile][startRank]->GetDelta(), isSpecialCase, startFile, startRank, this, currentPlayer)).count(numberedBoard[endFile][endRank])) {
             board[endFile][endRank] = board[startFile][startRank];
             board[startFile][startRank] = new Piece();
             currentPlayer *= -1;
-            MoveCommentary(currentPlayer);
             return true;
         }
     }
@@ -89,18 +87,22 @@ bool Board::MovePiece(string userMove){
     return false;
 }
 
-void Board::MoveCommentary(int currentPlayer){
+bool Board::MoveCommentary(int currentPlayer){
     if (MoveGenerator::IsCheck(this, currentPlayer)){
+        cout << "Check!" << endl;
         if (MoveGenerator::IsCheckmate(this, currentPlayer)){
             cout << "Checkmate!" << endl;
+            //Checmate for White so Black wins
             if (currentPlayer == 1){
                 cout << "Black wins!" << endl;
             }
             else{
                 cout << "White wins!" << endl;
             }
+            return true;
         }
     }
+    return false;
 }
 
 void Board::MoveComputer(){
@@ -113,9 +115,8 @@ void Board::MoveComputer(){
     //cout << endFile << " " << endRank << endl;
     board[endRank][endFile] = board[startRank][startFile];
     board[startRank][startFile] = new Piece();
-    cout << "Computer has moved " << endl;
+    cout << "Computer has moved " << static_cast<char>('A' + startFile) << startRank+1 << static_cast<char>('A' + endFile) << endRank+1 << endl;
     currentPlayer *= -1;
-    MoveCommentary(currentPlayer);
 }
 
 bool Board::ValidMove(string userMove){

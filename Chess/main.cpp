@@ -18,7 +18,8 @@ int main() {
     string userMove;
     //srand(time(NULL));
     bool legalMove;
-    while(1){
+    bool isCheckmate = false;
+    do{
         legalMove = false;
         board.Output();
         do{
@@ -26,7 +27,12 @@ int main() {
             cin >> userMove;
             legalMove = board.MovePiece(userMove);
         } while (legalMove == false);
-        board.MoveComputer();
-    }
+        //Use -1 as have to check for white
+        isCheckmate = board.MoveCommentary(-1);
+        if (!isCheckmate){
+            board.MoveComputer();
+            isCheckmate = board.MoveCommentary(1);
+        }
+    } while (!isCheckmate);
     return 0;
 }

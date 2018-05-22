@@ -236,10 +236,11 @@ namespace MoveGenerator
                     kingPos = i*8+j;
                     kingRow = i;
                     kingCol = j;
-                    break;
+                    goto stopLoop;
                 }
             }
         }
+        stopLoop:
         if ((GenerateMoves(((*board).GetPieceAtPosition(kingCol, kingRow))->GetDelta(), false, kingRow, kingCol, board, currentPlayer)).size() == 0){
             return true;
         }
@@ -258,11 +259,12 @@ namespace MoveGenerator
                     kingPos = i*8+j;
                     kingRow = i;
                     kingCol = j;
-                    break;
+                    //Breaks out of all loops
+                    goto foundKing;
                 }
             }
         }
-        
+        foundKing:
         //Check pawns right side
         int newRow = kingRow + currentPlayer;
         int newCol = kingCol + 1;

@@ -85,7 +85,8 @@ namespace ComputerMove
         Piece* tempStart;
         Piece* tempEnd;
         
-        if (currentDepth == 0){
+        //Break if no more moves or end of Minimax tree
+        if (currentDepth == 0 || numPieces <= 0){
             //Negative as black is minimizing player
             return evaluateBoard(board, currentPlayer);
         }
@@ -166,6 +167,21 @@ namespace ComputerMove
                 else if (pieceVal < 0) {
                     blackTotal += pieceVal;
                 }
+            }
+        }
+        if (MoveGenerator::IsCheck(board, currentPlayer)){
+            if (currentPlayer == 1){
+                if (MoveGenerator::IsCheckmate(board, currentPlayer)){
+                    blackTotal += -10000;
+                }
+                //Estimating check is worth 0.5 pawn advantage
+                blackTotal += -5;
+            }
+            else{
+                if (MoveGenerator::IsCheckmate(board, currentPlayer)){
+                    whiteTotal += 10000;
+                }
+                whiteTotal += 5;
             }
         }
         //Black total is negative so add rather than subtract
