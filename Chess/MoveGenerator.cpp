@@ -46,7 +46,7 @@ namespace MoveGenerator
                         curFile = (curPos % 8);
                         curRank = ((curPos - curFile) / 8);
                         //Maximum of 2 file move so check doesn't wrap around board
-                        if (curPos < 0 || curPos > 63 || abs(previousFile-curFile) > 2){
+                        if (curPos <= 0 || curPos >= 63 || abs(previousFile-curFile) > 2){
                             reachedEnd = true;
                         }
                         //Check if taking different player piece
@@ -96,7 +96,7 @@ namespace MoveGenerator
                     curPos += delta[curDelta];
                     curFile = (curPos % 8);
                     curRank = ((curPos - curFile) / 8);
-                    if (curPos > 0 && curPos < 63 && abs(previousFile-curFile) <= 2 && curPlayer * ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() <= 0){
+                    if (curPos >= 0 && curPos <= 63 && abs(previousFile-curFile) <= 2 && curPlayer * ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() <= 0){
                         tempStart = (*board).GetPieceAtPosition(previousFile, previousRank);
                         tempEnd = (*board).GetPieceAtPosition(curFile, curRank);
                         (*board).SetPieceAtPosition(curFile, curRank, tempStart);
@@ -104,8 +104,6 @@ namespace MoveGenerator
                         if (IsCheck(board, curPlayer)){
                             (*board).SetPieceAtPosition(curFile, curRank, tempEnd);
                             (*board).SetPieceAtPosition(previousFile, previousRank, tempStart);
-                            break;
-                            //Pinned piece so break out of loop
                         }
                         else{
                             (*board).SetPieceAtPosition(curFile, curRank, tempEnd);
@@ -126,7 +124,7 @@ namespace MoveGenerator
                     curPos += delta[curDelta];
                     curFile = (curPos % 8);
                     curRank = ((curPos - curFile) / 8);
-                    if (curPos > 0 && curPos < 63 && abs(previousFile-curFile) <= 2 && curPlayer * ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() <= 0){
+                    if (curPos >= 0 && curPos <= 63 && abs(previousFile-curFile) <= 2 && curPlayer * ((*board).GetPieceAtPosition(curFile, curRank))->GetValue() <= 0){
                         tempStart = (*board).GetPieceAtPosition(previousFile, previousRank);
                         tempEnd = (*board).GetPieceAtPosition(curFile, curRank);
                         (*board).SetPieceAtPosition(curFile, curRank, tempStart);

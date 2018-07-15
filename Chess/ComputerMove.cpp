@@ -19,7 +19,8 @@
 #include "Constants.h"
 
 using namespace std;
-
+//Number of positions evaluated for reference
+long int numPositions = 0;
 namespace ComputerMove
 {
     std::tuple<int, int> ChooseMove(Board* board, int currentPlayer){
@@ -43,12 +44,14 @@ namespace ComputerMove
         Piece* tempEnd;
         int bestMoveEvaluation = 10000;
         int currentEvaluation;
+        numPositions = 0;
         std::tuple<int, int> bestMove;
         for (int a = 0; a < numPieces; a++){
             std::set<int> moves = std::get<1>(allMoves).at(a);
             long int numMoves = moves.size();
             for (set<int>::iterator i = moves.begin(); i != moves.end(); i++) {
                 //Makes an inital first move to get minimax ball rolling...
+                numPositions++;
                 curPos = std::get<0>(allMoves).at(a);
                 previousFile = curPos % 8;
                 previousRank = (curPos - previousFile) / 8;
@@ -68,8 +71,8 @@ namespace ComputerMove
                 }
             }
         }
+        cout << "Positions evaluated: " << numPositions << endl;
         return bestMove;
-        
     }
     
     //Alpha-beta pruning implemented
@@ -84,7 +87,7 @@ namespace ComputerMove
         int bestMove;
         Piece* tempStart;
         Piece* tempEnd;
-        
+        numPositions++;
         //Break if no more moves or end of Minimax tree
         if (currentDepth == 0 || numPieces <= 0){
             //Negative as black is minimizing player
@@ -154,37 +157,32 @@ namespace ComputerMove
     }
     
     int evaluateBoard(Board* board, int currentPlayer){
-        int whiteTotal = 0;
-        int blackTotal = 0;
+        int total = 0;
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
                 //Checks if piece belongs to other player
                 Piece* curPiece = (*board).GetPieceAtPosition(j, i);
                 int pieceVal = curPiece->GetValue();
-                if (pieceVal > 0){
-                    whiteTotal += pieceVal;
-                }
-                else if (pieceVal < 0) {
-                    blackTotal += pieceVal;
-                }
+                //Can just add piece values as will account for +s and -s by itself
+                total += pieceVal;
             }
         }
         if (MoveGenerator::IsCheck(board, currentPlayer)){
             if (currentPlayer == 1){
                 if (MoveGenerator::IsCheckmate(board, currentPlayer)){
-                    blackTotal += -10000;
+                    total = -10000;
                 }
                 //Estimating check is worth 0.5 pawn advantage
-                blackTotal += -5;
+                total += -5;
             }
             else{
                 if (MoveGenerator::IsCheckmate(board, currentPlayer)){
-                    whiteTotal += 10000;
+                    total = 10000;
                 }
-                whiteTotal += 5;
+                total += 5;
             }
         }
         //Black total is negative so add rather than subtract
-        return whiteTotal + blackTotal;
+        return total;
     }
 }
